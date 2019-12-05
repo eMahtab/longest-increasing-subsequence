@@ -1,1 +1,1 @@
-# longest-increasing-subsequence
+# Longest Increasing Subsequence
