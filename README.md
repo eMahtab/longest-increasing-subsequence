@@ -11,40 +11,37 @@ Output: [-24, 2, 3, 5, 6, 35]
 
 ```java
 public static List<Integer> longestIncreasingSubsequence(int[] nums) {
-		List<Integer> list = new ArrayList<Integer>();
-		if (nums == null || nums.length == 0) {
-			return list;
+		if(nums == null || nums.length == 0) {
+			return new ArrayList<Integer>();
 		}
 		int length = nums.length;
 		int[] dpTable = new int[length];
+		int[] sequence = new int[length];
 		Arrays.fill(dpTable, 1);
-		int i = 0;
-		int index = 0;
-		int answer = 1;
-		for (int j = 1; j < length; j++) {
-			i = 0;
-			while (i < j) {
-				if (nums[j] > nums[i]) {
-					dpTable[j] = Math.max(dpTable[j], dpTable[i] + 1);
+		Arrays.fill(sequence, Integer.MIN_VALUE);
+		int maxLengthIndex = 0;
+		for(int i = 1; i < length; i++) {
+			for(int j = 0; j < i; j++) {
+				if(nums[j] < nums[i] && dpTable[j] + 1 > dpTable[i] ) {
+					dpTable[i] = dpTable[j] + 1;
+					sequence[i] = j;
 				}
-				i++;
 			}
-			if (dpTable[j] > answer) {
-				index = j;
-				answer = dpTable[j];
+			if(dpTable[i] > dpTable[maxLengthIndex]) {
+				maxLengthIndex = i;
 			}
 		}
+		
+		List<Integer> result = buildSequence(nums, sequence, maxLengthIndex);
+		return result;
+	}
 
-		list.add(nums[index]);
-
-		int loc = index;
-		for (int k = index - 1; k >= 0; k--) {
-			if (dpTable[k] + 1 == dpTable[loc]) {
-				list.add(nums[k]);
-				loc = k;
-			}
+	public static List<Integer> buildSequence(int[] nums, int[] sequence, int maxLengthIndex) {
+		List<Integer> list = new ArrayList<Integer>();
+		while(maxLengthIndex != Integer.MIN_VALUE) {
+			list.add(0, nums[maxLengthIndex]);
+			maxLengthIndex = sequence[maxLengthIndex];
 		}
-		Collections.reverse(list);
 		return list;
 	}
 ```
