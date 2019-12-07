@@ -6,6 +6,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class App {
+	
+	public static void main(String[] args) {
+		int[] arr = {5, 7, -24, 12, 10, 2, 3, 12, 5, 6, 35};
+		System.out.println(longestIncreasingSubsequence(arr));
+	}
 
 	public static List<Integer> longestIncreasingSubsequence(int[] nums) {
 		List<Integer> list = new ArrayList<Integer>();
