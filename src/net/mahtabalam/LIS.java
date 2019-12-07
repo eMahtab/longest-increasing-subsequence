@@ -32,7 +32,7 @@ public class LIS {
 		return result;
 	}
 
-	private static List<Integer> buildSequence(int[] nums, int[] sequence, int maxLengthIndex) {
+	public static List<Integer> buildSequence(int[] nums, int[] sequence, int maxLengthIndex) {
 		List<Integer> list = new ArrayList<Integer>();
 		while(maxLengthIndex != Integer.MIN_VALUE) {
 			list.add(0, nums[maxLengthIndex]);
