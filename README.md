@@ -10,6 +10,30 @@ Input: [5, 7, -24, 12, 10, 2, 3, 12, 5, 6, 35]
 Output: [-24, 2, 3, 5, 6, 35]
 
 
+## Implementation :
+```java
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        if(nums == null || nums.length == 0)
+            return 0;
+        int maxLIS = 1;
+        int[] dp = new int[nums.length];
+        dp[0] = 1;
+        for(int i = 1; i < nums.length; i++) {
+            int max = 1;
+            for(int j = 0; j < i; j++) {
+                if(nums[j] < nums[i]) {
+                  max = Math.max(max, dp[j] + 1);   
+                }
+            }
+            dp[i] = max;
+            maxLIS = Math.max(maxLIS, dp[i]);
+        }
+        return maxLIS;
+    }
+}
+```
+
 ```java
 public static List<Integer> longestIncreasingSubsequence(int[] nums) {
 		if(nums == null || nums.length == 0) {
@@ -46,3 +70,6 @@ public static List<Integer> buildSequence(int[] nums, int[] sequence, int maxLen
 		return list;
 }
 ```
+
+# References :
+https://www.youtube.com/watch?v=odrfUCS9sQk (Hindi, very good explanation)
