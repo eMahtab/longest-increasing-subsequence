@@ -10,7 +10,7 @@ Input: [5, 7, -24, 12, 10, 2, 3, 12, 5, 6, 35]
 Output: [-24, 2, 3, 5, 6, 35]
 
 
-## Implementation :
+## Implementation 1 :
 ```java
 class Solution {
     public int lengthOfLIS(int[] nums) {
@@ -34,6 +34,7 @@ class Solution {
 }
 ```
 
+## Implementation 2 : 
 ```java
 public static List<Integer> longestIncreasingSubsequence(int[] nums) {
 		if(nums == null || nums.length == 0) {
