@@ -10,7 +10,7 @@ Input: [5, 7, -24, 12, 10, 2, 3, 12, 5, 6, 35]
 Output: [-24, 2, 3, 5, 6, 35]
 
 
-## Implementation 1 :
+## Implementation 1 : O(n^2)
 ```java
 class Solution {
     public int lengthOfLIS(int[] nums) {
